@@ -16,5 +16,15 @@ namespace pixelart
         {
             InitializeComponent();
         }
+
+        private void pnlNav_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void mnNav_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
