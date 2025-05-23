@@ -59,6 +59,7 @@
             // 
             // pnl3
             // 
+            this.pnl3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnl3.BackColor = System.Drawing.Color.Gainsboro;
             this.pnl3.Location = new System.Drawing.Point(870, 175);
             this.pnl3.Margin = new System.Windows.Forms.Padding(0);
@@ -92,8 +93,9 @@
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(300, 40);
             this.btn1.TabIndex = 4;
-            this.btn1.Text = "button1";
+            this.btn1.Text = "Ir";
             this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn2
             // 
@@ -102,8 +104,9 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(300, 40);
             this.btn2.TabIndex = 5;
-            this.btn2.Text = "button2";
+            this.btn2.Text = "Ir";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
             // btnMake
             // 
@@ -112,8 +115,9 @@
             this.btnMake.Name = "btnMake";
             this.btnMake.Size = new System.Drawing.Size(300, 40);
             this.btnMake.TabIndex = 6;
-            this.btnMake.Text = "button3";
+            this.btnMake.Text = "Crear";
             this.btnMake.UseVisualStyleBackColor = true;
+            this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
             // 
             // Form1
             // 

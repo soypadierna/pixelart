@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pixelart.shared.views;
+using pixelart.canva.entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,5 +38,13 @@ namespace pixelart
         {
 
         }
+
+        private void btn2_Click(object sender, EventArgs e) => Canva.show();
+
+        private void btnMake_Click(object sender, EventArgs e) => Canva.show();
+
+        private void btn1_Click(object sender, EventArgs e) => Canva.show();
+
+        
     }
 }
