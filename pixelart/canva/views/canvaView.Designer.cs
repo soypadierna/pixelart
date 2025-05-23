@@ -30,13 +30,14 @@
         {
             this.title = new System.Windows.Forms.Label();
             this.pnlMapa = new System.Windows.Forms.Panel();
+            this.pnlColors = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // title
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Rubik Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(118, 91);
+            this.title.Location = new System.Drawing.Point(220, 50);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(265, 86);
             this.title.TabIndex = 0;
@@ -45,16 +46,25 @@
             // pnlMapa
             // 
             this.pnlMapa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMapa.Location = new System.Drawing.Point(120, 180);
+            this.pnlMapa.Location = new System.Drawing.Point(220, 140);
             this.pnlMapa.Name = "pnlMapa";
-            this.pnlMapa.Size = new System.Drawing.Size(1040, 500);
+            this.pnlMapa.Size = new System.Drawing.Size(800, 400);
             this.pnlMapa.TabIndex = 1;
+            // 
+            // pnlColors
+            // 
+            this.pnlColors.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlColors.Location = new System.Drawing.Point(220, 560);
+            this.pnlColors.Name = "pnlColors";
+            this.pnlColors.Size = new System.Drawing.Size(800, 100);
+            this.pnlColors.TabIndex = 2;
             // 
             // canvaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 893);
+            this.ClientSize = new System.Drawing.Size(1258, 744);
+            this.Controls.Add(this.pnlColors);
             this.Controls.Add(this.pnlMapa);
             this.Controls.Add(this.title);
             this.Font = new System.Drawing.Font("Rubik", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,5 +80,6 @@
 
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Panel pnlMapa;
+        private System.Windows.Forms.Panel pnlColors;
     }
 }
