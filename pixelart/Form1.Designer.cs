@@ -35,13 +35,21 @@
             this.pnlNav = new System.Windows.Forms.Panel();
             this.btn1 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
-            this.btnMake = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.lb1 = new System.Windows.Forms.Label();
+            this.lb2 = new System.Windows.Forms.Label();
+            this.lb3 = new System.Windows.Forms.Label();
+            this.pnl1.SuspendLayout();
+            this.pnl2.SuspendLayout();
+            this.pnl3.SuspendLayout();
             this.pnlBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl1
             // 
             this.pnl1.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnl1.Controls.Add(this.lb1);
+            this.pnl1.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.pnl1.Location = new System.Drawing.Point(90, 175);
             this.pnl1.Margin = new System.Windows.Forms.Padding(0);
             this.pnl1.Name = "pnl1";
@@ -51,6 +59,8 @@
             // pnl2
             // 
             this.pnl2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnl2.Controls.Add(this.lb2);
+            this.pnl2.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.pnl2.Location = new System.Drawing.Point(480, 175);
             this.pnl2.Margin = new System.Windows.Forms.Padding(0);
             this.pnl2.Name = "pnl2";
@@ -61,6 +71,8 @@
             // 
             this.pnl3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnl3.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnl3.Controls.Add(this.lb3);
+            this.pnl3.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.pnl3.Location = new System.Drawing.Point(870, 175);
             this.pnl3.Margin = new System.Windows.Forms.Padding(0);
             this.pnl3.Name = "pnl3";
@@ -95,7 +107,7 @@
             this.btn1.TabIndex = 4;
             this.btn1.Text = "Ir";
             this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+
             // 
             // btn2
             // 
@@ -106,25 +118,53 @@
             this.btn2.TabIndex = 5;
             this.btn2.Text = "Ir";
             this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
-            // btnMake
+            // btn3
             // 
-            this.btnMake.Location = new System.Drawing.Point(870, 591);
-            this.btnMake.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnMake.Name = "btnMake";
-            this.btnMake.Size = new System.Drawing.Size(300, 40);
-            this.btnMake.TabIndex = 6;
-            this.btnMake.Text = "Crear";
-            this.btnMake.UseVisualStyleBackColor = true;
-            this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
+            this.btn3.Location = new System.Drawing.Point(870, 591);
+            this.btn3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(300, 40);
+            this.btn3.TabIndex = 6;
+            this.btn3.Text = "ir";
+            this.btn3.UseVisualStyleBackColor = true;
+            // 
+            // lb1
+            // 
+            this.lb1.AutoSize = true;
+            this.lb1.Font = new System.Drawing.Font("Rubik Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb1.Location = new System.Drawing.Point(3, 343);
+            this.lb1.Name = "lb1";
+            this.lb1.Size = new System.Drawing.Size(143, 57);
+            this.lb1.TabIndex = 7;
+            this.lb1.Text = "Title";
+            // 
+            // lb2
+            // 
+            this.lb2.AutoSize = true;
+            this.lb2.Font = new System.Drawing.Font("Rubik Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb2.Location = new System.Drawing.Point(3, 343);
+            this.lb2.Name = "lb2";
+            this.lb2.Size = new System.Drawing.Size(143, 57);
+            this.lb2.TabIndex = 8;
+            this.lb2.Text = "Title";
+            // 
+            // lb3
+            // 
+            this.lb3.AutoSize = true;
+            this.lb3.Font = new System.Drawing.Font("Rubik Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb3.Location = new System.Drawing.Point(3, 343);
+            this.lb3.Name = "lb3";
+            this.lb3.Size = new System.Drawing.Size(143, 57);
+            this.lb3.TabIndex = 9;
+            this.lb3.Text = "Title";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 744);
-            this.Controls.Add(this.btnMake);
+            this.Controls.Add(this.btn3);
             this.Controls.Add(this.btn2);
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.pnl3);
@@ -134,8 +174,14 @@
             this.Font = new System.Drawing.Font("Rubik", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Piselart";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.pnl1.ResumeLayout(false);
+            this.pnl1.PerformLayout();
+            this.pnl2.ResumeLayout(false);
+            this.pnl2.PerformLayout();
+            this.pnl3.ResumeLayout(false);
+            this.pnl3.PerformLayout();
             this.pnlBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -149,7 +195,10 @@
         private System.Windows.Forms.Panel pnlNav;
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btn2;
-        private System.Windows.Forms.Button btnMake;
+        private System.Windows.Forms.Button btn3;
+        private System.Windows.Forms.Label lb1;
+        private System.Windows.Forms.Label lb2;
+        private System.Windows.Forms.Label lb3;
     }
 }
 

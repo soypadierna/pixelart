@@ -1,4 +1,4 @@
-﻿using pixelart.canvas.entities;
+﻿using pixelart.canva.entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +11,7 @@ namespace pixelart.shared.entities
     internal class PixelArtList
     {
 
-        Pixelart lobo = new Pixelart("Lobo", 17, 15, new List<Color>
+        public Pixelart lobo = new Pixelart("Lobo", 17, 15, new List<Color>
             {
                 Color.Black,
                 Color.LightBlue,

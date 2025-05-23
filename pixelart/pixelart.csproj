@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="canva\entities\Canva.cs" />
+    <Compile Include="canva\entities\Pixel.cs" />
     <Compile Include="canva\entities\Pixelart.cs" />
-    <Compile Include="canva\views\canvaView.cs">
+    <Compile Include="canva\entities\PixelMap.cs" />
+    <Compile Include="canva\views\Canva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="canva\views\canvaView.Designer.cs">
-      <DependentUpon>canvaView.cs</DependentUpon>
+    <Compile Include="canva\views\Canva.Designer.cs">
+      <DependentUpon>Canva.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -64,8 +65,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shared\entities\PixelArtList.cs" />
     <Compile Include="shared\views\ExitDialog.cs" />
-    <EmbeddedResource Include="canva\views\canvaView.resx">
-      <DependentUpon>canvaView.cs</DependentUpon>
+    <EmbeddedResource Include="canva\views\Canva.resx">
+      <DependentUpon>Canva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -92,6 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="home\entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
