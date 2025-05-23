@@ -12,6 +12,7 @@ namespace pixelart.canvas.entities
     {
         // Propiedades
         public string Name { get; set; }
+        //Eliminar
         public string Description { get; set; }
         public List<Color> Palette { get; set; }
         public int[,] Matrix { get; set; }

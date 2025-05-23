@@ -62,7 +62,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="shared\entities\border.cs" />
+    <Compile Include="shared\entities\PixelArtList.cs" />
     <Compile Include="shared\views\ExitDialog.cs" />
     <EmbeddedResource Include="canva\views\canvaView.resx">
       <DependentUpon>canvaView.cs</DependentUpon>
