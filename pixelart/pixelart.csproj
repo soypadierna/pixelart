@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="canva\entities\Linen.cs" />
+    <Compile Include="canva\entities\Palette.cs" />
     <Compile Include="canva\entities\Pixelart.cs" />
     <Compile Include="canva\views\Canva.cs">
       <SubType>Form</SubType>

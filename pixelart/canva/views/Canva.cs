@@ -27,6 +27,9 @@ namespace pixelart.canva.views
         {
             Linen linen = new Linen(Pixelart.boardOne, pnlCanva);
             pnlCanva = linen.panel;
+
+            Palette palette = new Palette(_pixelart.PaintColors, pnlPalette);
+            pnlPalette = palette.FlowPanel;
         }
 
         public static void show(Pixelart pixelart)

@@ -16,7 +16,6 @@ namespace pixelart
 {
     public partial class Home : Form
     {
-        private Bitmap _pixelArtBitmap;
 
         public Home()
         {
