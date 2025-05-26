@@ -1,4 +1,5 @@
 ﻿using pixelart.canva.entities;
+using pixelart.shared.entities;
 using pixelart.shared.views;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,12 @@ namespace pixelart.canva.views
 
         private void Canva_Load(object sender, EventArgs e)
         {
-            title.Text = _pixelart.Name;
-
-            _pixelart.pixelMap.View(pnlMap);
+            Linen linen = new Linen(Pixelart.boardOne, pnlCanva);
+            pnlCanva = linen.panel;
         }
 
         public static void show(Pixelart pixelart)
         {
-            // Busca si ya hay un Canva abierto
             Form openCanva = Application.OpenForms
                 .OfType<Canva>()
                 .FirstOrDefault();

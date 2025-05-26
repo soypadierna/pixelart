@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.title = new System.Windows.Forms.Label();
-            this.pnlMap = new System.Windows.Forms.Panel();
+            this.pnlCanva = new System.Windows.Forms.Panel();
             this.pnlColors = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -43,13 +43,13 @@
             this.title.TabIndex = 0;
             this.title.Text = "Titulo";
             // 
-            // pnlMap
+            // pnlCanva
             // 
-            this.pnlMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlMap.Location = new System.Drawing.Point(220, 140);
-            this.pnlMap.Name = "pnlMap";
-            this.pnlMap.Size = new System.Drawing.Size(800, 400);
-            this.pnlMap.TabIndex = 1;
+            this.pnlCanva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlCanva.Location = new System.Drawing.Point(220, 140);
+            this.pnlCanva.Name = "pnlCanva";
+            this.pnlCanva.Size = new System.Drawing.Size(800, 400);
+            this.pnlCanva.TabIndex = 1;
             // 
             // pnlColors
             // 
@@ -65,7 +65,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 744);
             this.Controls.Add(this.pnlColors);
-            this.Controls.Add(this.pnlMap);
+            this.Controls.Add(this.pnlCanva);
             this.Controls.Add(this.title);
             this.Font = new System.Drawing.Font("Rubik", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -80,7 +80,7 @@
         #endregion
 
         private System.Windows.Forms.Label title;
-        private System.Windows.Forms.Panel pnlMap;
+        private System.Windows.Forms.Panel pnlCanva;
         private System.Windows.Forms.Panel pnlColors;
     }
 }

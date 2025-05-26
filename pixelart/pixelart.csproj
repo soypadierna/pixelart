@@ -46,9 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="canva\entities\Pixel.cs" />
+    <Compile Include="canva\entities\Linen.cs" />
     <Compile Include="canva\entities\Pixelart.cs" />
-    <Compile Include="canva\entities\PixelMap.cs" />
     <Compile Include="canva\views\Canva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,7 +62,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="shared\entities\PixelArtList.cs" />
+    <Compile Include="shared\entities\Sign.cs" />
     <Compile Include="shared\views\ExitDialog.cs" />
     <EmbeddedResource Include="canva\views\Canva.resx">
       <DependentUpon>Canva.cs</DependentUpon>

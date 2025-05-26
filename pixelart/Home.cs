@@ -16,6 +16,8 @@ namespace pixelart
 {
     public partial class Home : Form
     {
+        private Bitmap _pixelArtBitmap;
+
         public Home()
         {
             InitializeComponent();
@@ -25,28 +27,22 @@ namespace pixelart
         {
             this.Focus();
 
-            List<Pixelart> pixelarts = Pixelart.list;
+            //!TODO: Poner padings a los paneles
 
             //Cartel 1
-            lb1.Text = pixelarts[0].Name;
-            //añadir imagen
-            btn1.Click += (s, e1) => Canva.show(pixelarts[0]);
-            lb1.Click += (s, e1) => Canva.show(pixelarts[0]);
-            pnl1.Click += (s, e1) => Canva.show(pixelarts[0]);
+            Sign sign1 = new Sign(Pixelart.boardOne, pnl1, btn1);
+            pnl1 = sign1.panel;
+            btn1 = sign1.button;
 
             //Cartel 2
-            lb2.Text = pixelarts[1].Name;
-            //añadir imagen
-            btn2.Click += (s, e1) => Canva.show(pixelarts[1]);
-            lb2.Click += (s, e1) => Canva.show(pixelarts[1]);
-            pnl2.Click += (s, e1) => Canva.show(pixelarts[1]);
+            Sign sign2 = new Sign(Pixelart.boardOne, pnl2, btn2);
+            pnl2 = sign2.panel;
+            btn2 = sign2.button;
 
             //Cartel 3
-            lb3.Text = pixelarts[2].Name;
-            //añadir imagen
-            btn3.Click += (s, e1) => Canva.show(pixelarts[2]);
-            lb3.Click += (s, e1) => Canva.show(pixelarts[2]);
-            pnl3.Click += (s, e1) => Canva.show(pixelarts[2]);
-        }   
+            Sign sign3 = new Sign(Pixelart.boardOne, pnl3, btn3);
+            pnl3 = sign3.panel;
+            btn3 = sign3.button;
+        }
     }
 }
