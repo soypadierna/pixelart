@@ -73,5 +73,11 @@ namespace pixelart.canva.views
             if (!shouldClose) e.Cancel = true;
 
         }
+
+        private void pnlCanva_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            //_pixelart.Paint(e.Y, e.X, );
+        }
     }
 }

@@ -10,89 +10,114 @@ namespace pixelart.canva.entities
     public class Pixelart
     {
         public string Name { get; set; }
-        public int Rows => Matrix.GetLength(0);
-        public int Columns => Matrix.GetLength(1);
+        public int Rows { get; }
+        public int Columns { get; }
+        public Pixel[,] Pixels { get; }
         public Dictionary<int, Color> PaintColors { get; }
-        public Dictionary<int, Color> InitColors { get; }
-        public int[,] Matrix { get; }
+
+        //public int Size { get; set; } = 10;
+        //private Dictionary<int, Color> InitColors { get; }
+        //private Color?[,] Painteds;
+        //public int[,] Matrix { get; }
         public double Percentage { get; set; }
-        public Bitmap Bitmap => Bmp();
 
         public Pixelart(
             string name,
             Dictionary<int, Color> paintColors,
-            Dictionary<int, Color> initColors,
             int[,] matrix
             )
         {
             Name = name;
             PaintColors = paintColors;
-            Matrix = matrix;
-            InitColors = initColors;
+            //Matrix = matrix;
+            //InitColors = _initColors(paintColors);
+            //Painteds = new Color?[Rows, Columns];
             Percentage = 0.0;
-        }
-        public Bitmap Bmp()
-        {
-            Bitmap bmp = new Bitmap(Columns, Rows);
 
-            for (int x = 0; x < Rows; x++)
+            Rows = matrix.GetLength(0);
+            Columns = matrix.GetLength(1);
+            Pixels = _initPixels(matrix);
+        }
+
+        private Pixel[,] _initPixels(int[,] matrix)
+        {
+            Pixel[,] pixels = new Pixel[Rows, Columns];
+
+            for (int row = 0; row < Rows; row++)
             {
-                for (int y = 0; y < Columns; y++)
+                for (int col = 0; col < Columns; col++)
                 {
-                    int colorId = Matrix[x, y];
-                    Color color = PaintColors.ContainsKey(colorId) ? InitColors[colorId] : Color.White;
-                    bmp.SetPixel(y, x, color);
+                    int code = matrix[row, col];
+                    Color defaultColor = PaintColors.ContainsKey(code) ? PaintColors[code] : Color.White;
+                    pixels[row, col] = new Pixel(row, col, code, defaultColor);
                 }
             }
-            return bmp;
+
+            return pixels;
+        }
+        //!TODO: Revisar
+        public void Paint(int row, int col, Color newColor)
+        {
+            if (row >= 0 && row < Rows && col >= 0 && col < Columns)
+            {
+                Pixels[row, col].Painted(newColor);
+            }
         }
 
-        private int _pixelSize(int Width, int Height)
+        private int _changePixelSize(int width, int height)
         {
-            const int Size = 30;
+            int pixelWidth = width / Columns;
+            int pixelHeight = height / Rows;
 
-            int pixelWidth = Width / Columns;
-            int pixelHeight = Height / Rows;
-
-            int pixelSize = Math.Min(Size, Math.Min(pixelWidth, pixelHeight));
+            int pixelSize = Math.Min(40, Math.Min(pixelWidth, pixelHeight));
 
             return Math.Max(pixelSize, 1);
         }
 
-        //!TODO: Cambiar funcion por la funcion del tamaño del pixel
-        public void scaler(PictureBox pictureBox, PaintEventArgs e)
+        public Bitmap Bmp(int width, int height, bool viewGrid = false)
         {
-            Graphics g = e.Graphics;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
-            g.Clear(pictureBox.BackColor);
+            int size = _changePixelSize(width, height);
+            Bitmap bmp = new Bitmap(Columns * size, Rows * size);
 
-            float scale = Math.Min(
-                (float)pictureBox.Width / Columns,
-                (float)pictureBox.Height / Rows
-            );
+            Graphics g = Graphics.FromImage(bmp);
+            g.Clear(Color.White);
 
-            int drawWidth = (int)(Columns * scale);
-            int drawHeight = (int)(Rows * scale);
-            int offsetX = (pictureBox.Width - drawWidth) / 2;
-            int offsetY = (pictureBox.Height - drawHeight) / 2;
+            Font font = new Font("Rubik Medium", 10F);
+            Pen borderPen = new Pen(Color.Black);
 
-            g.DrawImage(Bitmap, new Rectangle(offsetX, offsetY, drawWidth, drawHeight));
+            StringFormat format = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            for (int row = 0; row < Rows; row++)
+            {
+                for (int col = 0; col < Columns; col++)
+                {
+                    Pixel p = Pixels[row, col];
+                    var rect = new Rectangle(col * size, row * size, size, size);
+
+                    SolidBrush brush = new SolidBrush(p.color);
+                    g.FillRectangle(brush, rect);
+
+                    if (!p.isPainted && viewGrid && p.Code != 0)
+                    {
+                        g.DrawRectangle(borderPen, rect);
+                        g.DrawString(p.Code.ToString(), font, Brushes.Black, rect, format);
+                    }
+                }
+            }
+
+            return bmp;
         }
 
         public static Pixelart boardOne = new Pixelart(
             "Lobo",
     new Dictionary<int, Color>
 {
-        { 1, Color.FromArgb(255, 0, 0, 0) },         // Negro
-        { 2, Color.FromArgb(255, 192, 192, 192) },   // Gris claro
-        { 3, Color.FromArgb(255, 128, 128, 128) }    // Gris oscuro
-},
-    new Dictionary<int, Color>
-{
-        { 1, Color.FromArgb(255, 0, 0, 0) },         // Negro
-        { 2, Color.FromArgb(255, 192, 192, 192) },   // Gris claro
-        { 3, Color.FromArgb(255, 128, 128, 128) }    // Gris oscuro
+        { 1, Color.FromArgb(255, 0, 0, 0) },
+        { 3, Color.FromArgb(255, 128, 128, 128) }
 },
     new int[,]
     {

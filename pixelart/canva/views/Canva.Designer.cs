@@ -51,6 +51,7 @@
             this.pnlCanva.Name = "pnlCanva";
             this.pnlCanva.Size = new System.Drawing.Size(800, 400);
             this.pnlCanva.TabIndex = 1;
+            this.pnlCanva.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlCanva_MouseClick);
             // 
             // pnlColors
             // 
