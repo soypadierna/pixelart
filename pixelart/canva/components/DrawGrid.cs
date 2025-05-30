@@ -1,5 +1,6 @@
 ﻿using pixelart.canva.entities;
 using pixelart.canva.providers;
+using pixelart.shared.entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,16 +25,8 @@ namespace pixelart.canva.components
             _pixelart = pixelart;
             this.size = size;
 
-            _changeCellSize();
+            PixelSize = Functions.changeCellSize(size, pixelart.Columns, pixelart.Rows);
             _createBmp();
-        }
-
-        private void _changeCellSize()
-        {
-            int pixelWidth = size.Width / Columns;
-            int pixelHeight = size.Height / Rows;
-
-            PixelSize = Math.Max(1, Math.Min(pixelWidth, pixelHeight));
         }
 
         private void _createBmp()
@@ -44,8 +37,10 @@ namespace pixelart.canva.components
             {
                 g.Clear(Color.White);
 
-                if (_pixelart.isFree) _createGrid(g);
-                else _createBookmark(g);
+                if (_pixelart.isFree)
+                    _createGrid(g);
+                else
+                    _createBookmark(g);
             }
             bmp = newBmp;
         }
@@ -79,32 +74,35 @@ namespace pixelart.canva.components
                 for (int y = 0; y < Columns; y++)
                 {
                     Pixel p = _pixelart.Pixels[x, y];
-                    if (p.isPainted || p.Code == 0) continue;
+                    if (p.isPainted || p.Code == 0)
+                        continue;
 
                     Rectangle rect = new Rectangle(y * PixelSize, x * PixelSize, PixelSize, PixelSize);
+                    g.FillRectangle(new SolidBrush(p.color), y * PixelSize, x * PixelSize, PixelSize, PixelSize);
                     g.DrawRectangle(Pens.Gray, rect);
                     g.DrawString(p.Code.ToString(), font, Brushes.Black, rect, format);
                 }
             }
         }
 
-        public void paintDrawing(int col, int row) 
+        public void paintDrawing(int col, int row)
         {
             using (Graphics g = Graphics.FromImage(bmp))
             {
                 if (_pixelart.isFree)
                     _paintFree(col, row, g);
-                else _paintPixelart(col, row, g);
+                else
+                    _paintPixelart(col, row, g);
             }
         }
 
-        private void _paintFree(int col, int row, Graphics g) 
+        private void _paintFree(int col, int row, Graphics g)
         {
             Color color = ColorProvider.Instance.SelectedColor;
             g.FillRectangle(new SolidBrush(color), col * PixelSize + 1, row * PixelSize + 1, PixelSize - 1, PixelSize - 1);
         }
 
-        private void _paintPixelart(int col, int row, Graphics g) 
+        private void _paintPixelart(int col, int row, Graphics g)
         {
             Pixel p = _pixelart.Pixels[row, col];
 
@@ -115,6 +113,12 @@ namespace pixelart.canva.components
             g.FillRectangle(new SolidBrush(p.color), col * PixelSize, row * PixelSize, PixelSize, PixelSize);
 
             _createBookmark(g);
+        }
+
+        private void _colorGuide(Graphics g)
+        {
+            Color color = ColorProvider.Instance.SelectedColor;
+            g.FillRectangle(new SolidBrush(color), Columns * PixelSize + 1, Rows * PixelSize + 1, PixelSize - 1, PixelSize - 1);
         }
     }
 }

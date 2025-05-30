@@ -26,7 +26,7 @@ namespace pixelart.canva.views
 
             DrawGrid drawGrid = new DrawGrid(pixelart, pnlCanva.Size);
 
-            Palette palette = new Palette(Pixelart.boardOne.PaintColors, pnlPalette);
+            Palette palette = new Palette(pixelart.PaintColors, pnlPalette);
             pnlPalette = palette.FlowPanel;
 
             Linen linen = new Linen(pnlCanva, drawGrid);
@@ -74,6 +74,5 @@ namespace pixelart.canva.views
             if (!shouldClose) e.Cancel = true;
 
         }
-
     }
 }

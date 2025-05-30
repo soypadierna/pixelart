@@ -34,7 +34,7 @@ namespace pixelart
             btn1 = sign1.button;
 
             //Cartel 2
-            Sign sign2 = new Sign(Pixelart.boardOne, pnl2, btn2);
+            Sign sign2 = new Sign(Pixelart.flower, pnl2, btn2);
             pnl2 = sign2.panel;
             btn2 = sign2.button;
 

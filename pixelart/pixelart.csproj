@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shared\entities\Functions.cs" />
     <Compile Include="shared\entities\Sign.cs" />
     <Compile Include="shared\views\ExitDialog.cs" />
     <EmbeddedResource Include="canva\views\Canva.resx">

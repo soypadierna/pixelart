@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pixelart.shared.entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -9,37 +10,26 @@ namespace pixelart.canva.entities
 {
     public class Pixelart
     {
-        //!TODO: se debe de construir
-        public bool isFree = false;
-        
+        public bool isFree;
         public string Name { get; set; }
-        public int Rows { get; }
-        public int Columns { get; }
+        public int Rows;
+        public int Columns;
         public Pixel[,] Pixels { get; }
         public Dictionary<int, Color> PaintColors { get; }
-        public int Size { get; set; } = 1;
-
-        //public int Size { get; set; } = 10;
-        //private Dictionary<int, Color> InitColors { get; }
-        //private Color?[,] Painteds;
-        //public int[,] Matrix { get; }
-        public double Percentage { get; set; }
 
         public Pixelart(
             string name,
             Dictionary<int, Color> paintColors,
-            int[,] matrix
+            int[,] matrix,
+            bool isFree = false
             )
         {
             Name = name;
+            this.isFree = isFree;
             PaintColors = paintColors;
-            //Matrix = matrix;
-            //InitColors = _initColors(paintColors);
-            //Painteds = new Color?[Rows, Columns];
-            Percentage = 0.0;
-
             Rows = matrix.GetLength(0);
             Columns = matrix.GetLength(1);
+
             Pixels = _initPixels(matrix);
         }
 
@@ -59,61 +49,60 @@ namespace pixelart.canva.entities
 
             return pixels;
         }
-        //!TODO: Revisar
-        public void Paint(int row, int col, Color newColor)
+
+        public Bitmap PreView(Size size)
         {
-            if (row >= 0 && row < Rows && col >= 0 && col < Columns)
+            int PixelSize = Functions.changeCellSize(size, Columns, Rows);
+            ;
+            Bitmap newBmp = new Bitmap(Columns * PixelSize, Rows * PixelSize);
+
+            using (Graphics g = Graphics.FromImage(newBmp))
             {
-                Pixels[row, col].Painted(newColor);
-            }
-        }
+                g.Clear(Color.White);
 
-        private void _changePixelSize(int width, int height)
-        {
-            int pixelWidth = width / Columns;
-            int pixelHeight = height / Rows;
-
-            Size = Math.Max(1, Math.Min(pixelWidth, pixelHeight));
-        }
-
-        public Bitmap Bmp(int width, int height, bool viewGrid = false)
-        {
-            _changePixelSize(width, height);
-
-            Bitmap bmp = new Bitmap(Columns * Size, Rows * Size);
-
-            Graphics g = Graphics.FromImage(bmp);
-            g.Clear(Color.White);
-
-            Font font = new Font("Rubik Medium", 10F);
-            Pen borderPen = new Pen(Color.Black);
-
-            StringFormat format = new StringFormat
-            {
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center
-            };
-
-            for (int row = 0; row < Rows; row++)
-            {
-                for (int col = 0; col < Columns; col++)
+                for (int x = 0; x < Rows; x++)
                 {
-                    Pixel p = Pixels[row, col];
-                    var rect = new Rectangle(col * Size, row * Size, Size, Size);
-
-                    SolidBrush brush = new SolidBrush(p.color);
-                    g.FillRectangle(brush, rect);
-
-                    if (!p.isPainted && viewGrid && p.Code != 0)
+                    for (int y = 0; y < Columns; y++)
                     {
-                        g.DrawRectangle(borderPen, rect);
-                        g.DrawString(p.Code.ToString(), font, Brushes.Black, rect, format);
+                        Pixel p = Pixels[x, y];
+                        if (p.isPainted || p.Code == 0)
+                            continue;
+
+                        g.FillRectangle(new SolidBrush(p.color), y * PixelSize, x * PixelSize, PixelSize, PixelSize);
                     }
                 }
-            }
 
-            return bmp;
+            }
+            return newBmp;
         }
+
+
+        public static Pixelart flower = new Pixelart(
+    "Flor",
+    new Dictionary<int, Color>
+    {
+        { 1, Color.FromArgb(255, 0, 128, 0) },      
+        { 2, Color.FromArgb(255, 255, 255, 0) },    
+        { 3, Color.FromArgb(255, 255, 105, 180) },  
+        { 4, Color.FromArgb(255, 255, 20, 147) },   
+    },
+    new int[,]
+    {
+        {0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 3, 4, 3, 4, 3, 0, 0, 0, 0},
+        {0, 0, 0, 3, 4, 3, 3, 3, 4, 3, 0, 0, 0},
+        {0, 0, 3, 4, 3, 3, 2, 3, 3, 4, 3, 0, 0},
+        {0, 0, 3, 3, 3, 2, 2, 2, 3, 3, 3, 0, 0},
+        {0, 3, 4, 3, 2, 2, 2, 2, 2, 3, 4, 3, 0},
+        {0, 0, 3, 3, 3, 2, 2, 2, 3, 3, 3, 0, 0},
+        {0, 0, 0, 3, 4, 3, 2, 3, 4, 3, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}
+    });
+
 
         public static Pixelart boardOne = new Pixelart(
             "Lobo",

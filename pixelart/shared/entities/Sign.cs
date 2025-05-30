@@ -47,7 +47,7 @@ namespace pixelart.shared.entities
                 Dock = DockStyle.Fill,
                 SizeMode = PictureBoxSizeMode.CenterImage,
                 BackColor = Color.White,
-                Image = pixelart.Bmp(panel.Width, panel.Height),
+                Image = pixelart.PreView(panel.Size),
             };
 
             _label.Click += (s, e) => Canva.show(pixelart);
