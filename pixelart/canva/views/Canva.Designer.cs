@@ -46,12 +46,12 @@
             // 
             // pnlCanva
             // 
+            this.pnlCanva.BackColor = System.Drawing.Color.White;
             this.pnlCanva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCanva.Location = new System.Drawing.Point(128, 142);
             this.pnlCanva.Name = "pnlCanva";
             this.pnlCanva.Size = new System.Drawing.Size(800, 400);
             this.pnlCanva.TabIndex = 1;
-            this.pnlCanva.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlCanva_MouseClick);
             // 
             // pnlColors
             // 
@@ -82,7 +82,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Canva";
             this.Text = "Canva";
-            this.Load += new System.EventHandler(this.Canva_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,4 +1,6 @@
-﻿using pixelart.canva.entities;
+﻿using pixelart.canva.components;
+using pixelart.canva.entities;
+using pixelart.canva.providers;
 using pixelart.shared.entities;
 using pixelart.shared.views;
 using System;
@@ -19,17 +21,16 @@ namespace pixelart.canva.views
         public Canva(Pixelart pixelart)
         {
             InitializeComponent();
-            _pixelart = pixelart;
-            this.FormClosing += closing;
-        }
 
-        private void Canva_Load(object sender, EventArgs e)
-        {
-            Linen linen = new Linen(Pixelart.boardOne, pnlCanva);
-            pnlCanva = linen.panel;
+            title.Text = pixelart.Name;
 
-            Palette palette = new Palette(_pixelart.PaintColors, pnlPalette);
+            DrawGrid drawGrid = new DrawGrid(pixelart, pnlCanva.Size);
+
+            Palette palette = new Palette(Pixelart.boardOne.PaintColors, pnlPalette);
             pnlPalette = palette.FlowPanel;
+
+            Linen linen = new Linen(pnlCanva, drawGrid);
+            pnlCanva = linen.panel;
         }
 
         public static void show(Pixelart pixelart)
@@ -74,10 +75,5 @@ namespace pixelart.canva.views
 
         }
 
-        private void pnlCanva_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            //_pixelart.Paint(e.Y, e.X, );
-        }
     }
 }

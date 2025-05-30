@@ -9,11 +9,15 @@ namespace pixelart.canva.entities
 {
     public class Pixelart
     {
+        //!TODO: se debe de construir
+        public bool isFree = false;
+        
         public string Name { get; set; }
         public int Rows { get; }
         public int Columns { get; }
         public Pixel[,] Pixels { get; }
         public Dictionary<int, Color> PaintColors { get; }
+        public int Size { get; set; } = 1;
 
         //public int Size { get; set; } = 10;
         //private Dictionary<int, Color> InitColors { get; }
@@ -64,20 +68,19 @@ namespace pixelart.canva.entities
             }
         }
 
-        private int _changePixelSize(int width, int height)
+        private void _changePixelSize(int width, int height)
         {
             int pixelWidth = width / Columns;
             int pixelHeight = height / Rows;
 
-            int pixelSize = Math.Min(40, Math.Min(pixelWidth, pixelHeight));
-
-            return Math.Max(pixelSize, 1);
+            Size = Math.Max(1, Math.Min(pixelWidth, pixelHeight));
         }
 
         public Bitmap Bmp(int width, int height, bool viewGrid = false)
         {
-            int size = _changePixelSize(width, height);
-            Bitmap bmp = new Bitmap(Columns * size, Rows * size);
+            _changePixelSize(width, height);
+
+            Bitmap bmp = new Bitmap(Columns * Size, Rows * Size);
 
             Graphics g = Graphics.FromImage(bmp);
             g.Clear(Color.White);
@@ -96,7 +99,7 @@ namespace pixelart.canva.entities
                 for (int col = 0; col < Columns; col++)
                 {
                     Pixel p = Pixels[row, col];
-                    var rect = new Rectangle(col * size, row * size, size, size);
+                    var rect = new Rectangle(col * Size, row * Size, Size, Size);
 
                     SolidBrush brush = new SolidBrush(p.color);
                     g.FillRectangle(brush, rect);

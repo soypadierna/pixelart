@@ -41,9 +41,9 @@ namespace pixelart.canva.entities
                 return;
             }
 
-            int r = (int)(newColor.R + (255 - newColor.R) * 0.4);
-            int g = (int)(newColor.G + (255 - newColor.G) * 0.4);
-            int b = (int)(newColor.B + (255 - newColor.B) * 0.4);
+            int r = (int)(newColor.R + (255 - newColor.R) * 0.6);
+            int g = (int)(newColor.G + (255 - newColor.G) * 0.6);
+            int b = (int)(newColor.B + (255 - newColor.B) * 0.6);
 
             color = Color.FromArgb(color.A, r, g, b);
         }

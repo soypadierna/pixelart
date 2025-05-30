@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pixelart.canva.providers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace pixelart.canva.entities
                     Margin = new Padding(0,10,0,0),
                     BackColor = color.Value,
                     Name = $"clr_{color.Key}",
-                    Text = color.Value.Name,
+                    Text = color.Key.ToString(),
                     TextAlign = ContentAlignment.MiddleCenter,
                     ForeColor = color.Value.ToArgb() == Color.Black.ToArgb() ? Color.White : Color.Black,
                 };
@@ -61,6 +62,7 @@ namespace pixelart.canva.entities
                     }
 
                     check.Checked = true;
+                    ColorProvider.Instance.SetColor(check.BackColor);
                 };
 
                 FlowPanel.Controls.Add(check);

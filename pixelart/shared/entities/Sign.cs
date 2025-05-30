@@ -50,8 +50,8 @@ namespace pixelart.shared.entities
                 Image = pixelart.Bmp(panel.Width, panel.Height),
             };
 
-            _picture.Click += (s, e) => Canva.show(pixelart);
             _label.Click += (s, e) => Canva.show(pixelart);
+            _picture.Click += (s, e) => Canva.show(pixelart);
             button.Click += (s, e1) => Canva.show(pixelart);
             panel.Click += (s, e1) => Canva.show(pixelart);
 

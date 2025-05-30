@@ -46,15 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="canva\components\DrawGrid.cs" />
     <Compile Include="canva\entities\Linen.cs" />
     <Compile Include="canva\entities\Palette.cs" />
     <Compile Include="canva\entities\Pixel.cs" />
     <Compile Include="canva\entities\Pixelart.cs" />
+    <Compile Include="canva\providers\ColorProvider.cs" />
     <Compile Include="canva\views\Canva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="canva\views\Canva.Designer.cs">
       <DependentUpon>Canva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="canva\views\Create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="canva\views\Create.Designer.cs">
+      <DependentUpon>Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
