@@ -1,4 +1,7 @@
-﻿using pixelart.canva.entities;
+﻿using pixelart.canva.components;
+using pixelart.canva.entities;
+using pixelart.canva.providers;
+using pixelart.shared.entities;
 using pixelart.shared.views;
 using System;
 using System.Collections.Generic;
@@ -18,20 +21,20 @@ namespace pixelart.canva.views
         public Canva(Pixelart pixelart)
         {
             InitializeComponent();
-            _pixelart = pixelart;
-            this.FormClosing += closing;
-        }
 
-        private void Canva_Load(object sender, EventArgs e)
-        {
-            title.Text = _pixelart.Name;
+            title.Text = pixelart.Name;
 
-            _pixelart.pixelMap.View(pnlMap);
+            DrawGrid drawGrid = new DrawGrid(pixelart, pnlCanva.Size);
+
+            Palette palette = new Palette(pixelart.PaintColors, pnlPalette);
+            pnlPalette = palette.FlowPanel;
+
+            Linen linen = new Linen(pnlCanva, drawGrid);
+            pnlCanva = linen.panel;
         }
 
         public static void show(Pixelart pixelart)
         {
-            // Busca si ya hay un Canva abierto
             Form openCanva = Application.OpenForms
                 .OfType<Canva>()
                 .FirstOrDefault();

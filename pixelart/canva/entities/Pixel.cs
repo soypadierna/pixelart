@@ -9,30 +9,44 @@ namespace pixelart.canva.entities
 {
     public class Pixel
     {
-        public int Id { get; set; }
-        public Color IntColor { get; set; }
-        public Color PaintColor { get; set; }
-        public bool IsPainted { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Color color { get; set; }
+        public Color DefaultColor { get; set; }
+        public bool isPainted { get; set; }  = false;
+        public int Row { get; set; }
+        public int Column { get; set; }
+        public int Code { get; set; }
 
-        public Pixel(int id, Color initialColor, Color paintColor, int x, int y, bool isPainted = false)
+        public Pixel(int row, int column, int code, Color defaultColor)
         {
-            this.Id = id;
-            this.IntColor = initialColor;
-            this.PaintColor = paintColor;
-            this.X = x;
-            this.Y = y;
-            this.IsPainted = isPainted;
+            Row = row;
+            Column = column;
+            color = _initColor(defaultColor);
+            Code = code;
+            DefaultColor = defaultColor;
         }
 
-        public void onPaintend(Color colorSelect)
+        private Color _initColor(Color defaultColor)
         {
-            this.IsPainted = (colorSelect == PaintColor);
+            int gris = (int)(defaultColor.R * 0.3 + defaultColor.G * 0.59 + defaultColor.B * 0.11);
+            gris = (int)(gris + (255 - gris) * 0.4);
+            return Color.FromArgb(defaultColor.A, gris, gris, gris);
+        }
 
-            if(IsPainted) this.IntColor = PaintColor;
-            //añadir tinte de color pero mas claro
+        public void Painted(Color newColor)
+        {
+            if (newColor.ToArgb() == DefaultColor.ToArgb())
+            { 
+                color = newColor;
+                isPainted = true;
+                return;
+            }
 
+            int r = (int)(newColor.R + (255 - newColor.R) * 0.6);
+            int g = (int)(newColor.G + (255 - newColor.G) * 0.6);
+            int b = (int)(newColor.B + (255 - newColor.B) * 0.6);
+
+            color = Color.FromArgb(color.A, r, g, b);
         }
     }
+
 }
