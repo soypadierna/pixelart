@@ -38,10 +38,31 @@ namespace pixelart
             pnl2 = sign2.panel;
             btn2 = sign2.button;
 
-            //Cartel 3
-            Sign sign3 = new Sign(Pixelart.boardOne, pnl3, btn3);
-            pnl3 = sign3.panel;
-            btn3 = sign3.button;
+            //Free Board
+            create();
+
+        }
+
+        private void create()
+        {
+            Create create = new Create();
+            Label _label = new Label
+            {
+                Text = "Tablero Libre",
+                Height = 40,
+                TextAlign = ContentAlignment.BottomLeft,
+                Dock = DockStyle.Bottom,
+                Font = new Font("Rubik Black", 24F, FontStyle.Bold),
+                BackColor = Color.White,
+            };
+
+            _label.Click += (s, e) => create.ShowDialog();
+            picFree.Click += (s, e) => create.ShowDialog();
+            pnl3.Click += (s, e1) => create.ShowDialog();
+            btn3.Click += (s, e1) => create.ShowDialog();
+
+            pnl3.Controls.Add(_label);
+            _label.BringToFront();
         }
     }
 }

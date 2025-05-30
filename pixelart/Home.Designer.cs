@@ -36,7 +36,10 @@
             this.pnl1 = new System.Windows.Forms.Panel();
             this.pnl2 = new System.Windows.Forms.Panel();
             this.pnl3 = new System.Windows.Forms.Panel();
+            this.picFree = new System.Windows.Forms.PictureBox();
             this.pnlBar.SuspendLayout();
+            this.pnl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFree)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBar
@@ -90,6 +93,7 @@
             // 
             // pnl1
             // 
+            this.pnl1.BackColor = System.Drawing.Color.White;
             this.pnl1.Location = new System.Drawing.Point(91, 175);
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(300, 400);
@@ -97,6 +101,7 @@
             // 
             // pnl2
             // 
+            this.pnl2.BackColor = System.Drawing.Color.White;
             this.pnl2.Location = new System.Drawing.Point(480, 175);
             this.pnl2.Name = "pnl2";
             this.pnl2.Size = new System.Drawing.Size(300, 400);
@@ -104,10 +109,22 @@
             // 
             // pnl3
             // 
+            this.pnl3.BackColor = System.Drawing.Color.White;
+            this.pnl3.Controls.Add(this.picFree);
             this.pnl3.Location = new System.Drawing.Point(870, 175);
             this.pnl3.Name = "pnl3";
             this.pnl3.Size = new System.Drawing.Size(300, 400);
             this.pnl3.TabIndex = 9;
+            // 
+            // picFree
+            // 
+            this.picFree.BackgroundImage = global::pixelart.Properties.Resources.mas_simbolo_negro;
+            this.picFree.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picFree.Location = new System.Drawing.Point(114, 148);
+            this.picFree.Name = "picFree";
+            this.picFree.Size = new System.Drawing.Size(84, 78);
+            this.picFree.TabIndex = 0;
+            this.picFree.TabStop = false;
             // 
             // Home
             // 
@@ -127,6 +144,8 @@
             this.Text = "Piselart";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlBar.ResumeLayout(false);
+            this.pnl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picFree)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -140,6 +159,7 @@
         private System.Windows.Forms.Panel pnl1;
         private System.Windows.Forms.Panel pnl2;
         private System.Windows.Forms.Panel pnl3;
+        private System.Windows.Forms.PictureBox picFree;
     }
 }
 

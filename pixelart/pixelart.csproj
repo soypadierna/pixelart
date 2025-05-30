@@ -78,6 +78,9 @@
     <EmbeddedResource Include="canva\views\Canva.resx">
       <DependentUpon>Canva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="canva\views\Create.resx">
+      <DependentUpon>Create.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="assets\fonts\Rubik-Regular.ttf" />
     <None Include="Properties\Settings.settings">
@@ -106,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="home\entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\images\mas-simbolo-negro.png" />
+    <None Include="Resources\mas-simbolo-negro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -114,11 +114,5 @@ namespace pixelart.canva.components
 
             _createBookmark(g);
         }
-
-        private void _colorGuide(Graphics g)
-        {
-            Color color = ColorProvider.Instance.SelectedColor;
-            g.FillRectangle(new SolidBrush(color), Columns * PixelSize + 1, Rows * PixelSize + 1, PixelSize - 1, PixelSize - 1);
-        }
     }
 }
